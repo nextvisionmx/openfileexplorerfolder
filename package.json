@@ -1,0 +1,76 @@
+{
+  "name": "openfileexplorerfolder",
+  "displayName": "OpenFileExplorerFolder",
+  "description": "Abrir un folder en el explorador de windows",
+  "version": "0.0.1",
+  "publisher": "Next Vision",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+      "onCommand:extension.openFolder",
+      "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+      "commands": [
+          {
+              "command": "extension.openFolder",
+              "title": "Abrir Carpeta"
+          }
+      ],
+      "configuration": {
+          "type": "object",
+          "title": "Configuración de OpenFileExplorerFolder",
+          "properties": {
+              "openfileexplorerfolder.folders": {
+                  "type": "array",
+                  "description": "Lista de directorios para abrir en el explorador, con nombres opcionales.",
+                  "items": {
+                      "type": "object",
+                      "properties": {
+                          "path": {
+                              "type": "string",
+                              "description": "Ruta del directorio."
+                          },
+                          "name": {
+                              "type": "string",
+                              "description": "Nombre opcional para mostrar en lugar de la ruta."
+                          }
+                      },
+                      "required": ["path"]
+                  },
+                  "default": []
+              },
+              "openfileexplorerfolder.statusBarAlignment": {
+                  "type": "string",
+                  "enum": ["left", "right"],
+                  "default": "left",
+                  "description": "La alineación del botón en la barra de estado."
+              }
+          }
+      }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
