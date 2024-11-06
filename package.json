@@ -11,7 +11,6 @@
     "Other"
   ],
   "activationEvents": [
-      "onCommand:extension.openFolder",
       "onStartupFinished"
   ],
   "main": "./out/extension.js",
@@ -48,11 +47,15 @@
               "openfileexplorerfolder.statusBarAlignment": {
                   "type": "string",
                   "enum": ["left", "right"],
-                  "default": "left",
+                  "default": "right",
                   "description": "La alineación del botón en la barra de estado."
               }
           }
       }
+  },
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/nextvisionmx/openfileexplorerfolder"
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
